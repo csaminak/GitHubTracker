@@ -9,26 +9,34 @@
     </head>
     <body>
 
-    <section class='login view'>
+    <section id='login' class='view'>
         <form class='login' action='' method='post'> <!--what action-->
-            <input id='token' name='token' type='text' placeholder='GitHub API Token'>
+            <input name='token' type='text' placeholder='GitHub API Token'>
             <input type='submit' value='Login'>
         </form>
     </section>
 
-    <button class='logout'></button>
+    <nav>
+        <ul>
+            <li><a href='#myProfile'>My Profile</a></li>
+            <li><a href='#repos'>Repos</a></li>
+            <li><a href='#repoDetail'>Repo Detail</a></li>
+        </ul>
+        <button class='logout'></button>
+    </nav>
 
-    <section class='myProfile view'>
+    <section id='myProfile' class='view'>
     </section>
 
-    <section class='repos view'>
+    <section id='repos' class='view'>
     </section>
 
-    <section class='repoDetail view'>
+    <section id='repoDetail' class='view'>
     </section>
 
     <script src='js/jquery3.0.js'></script>
     <script src='js/login.js'></script>
+    <script src='js/nav.js'></script>
     <script src='js/myProfile.js'></script>
     <script src='js/repos.js'></script>
     <script src='js/repoDetail.js'></script>
