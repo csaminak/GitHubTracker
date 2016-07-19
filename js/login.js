@@ -6,6 +6,7 @@
     var $token = $('input[name="token"]');
     var $myProfile = $('#myProfile');
     var $loginView = $('section.login');
+    var $nav = $('.nav');
     ns.user = {};
 
     $login.on('submit', function(event){
@@ -13,9 +14,11 @@
         $token = $token.val();
         authenticateToken($token)
             .done(saveUser);
-        console.log($token);
         $myProfile.show();
+        $nav.show();
         $loginView.hide();
+        console.log($token);
+        console.log(ns.user);
     });
 
 
@@ -45,7 +48,6 @@
      */
     function saveUser(data) {
         ns.user = data;
-        console.log(ns.user);
     }
 
 })(window.ghLogin);
