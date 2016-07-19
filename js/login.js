@@ -2,23 +2,18 @@
     'use strict';
     window.ghLogin = ns = (ns || {});
 
-    var $login = $('form.login');
+    var $loginForm = $('form.login');
     var $token = $('input[name="token"]');
-    var $myProfile = $('#myProfile');
-    var $loginView = $('section.login');
-    var $nav = $('.nav');
+
+
     ns.user = {};
 
-    $login.on('submit', function(event){
+    $loginForm.on('submit', function getMyProfile(event){
         event.preventDefault();
         $token = $token.val();
-        authenticateToken($token)
-            .done(saveUser);
-        $myProfile.show();
-        $nav.show();
-        $loginView.hide();
         console.log($token);
-        console.log(ns.user);
+        authenticateToken($token)
+            .done(goToMyProfile);
     });
 
 
@@ -41,6 +36,17 @@
 
 
     /**
+     * [goToMyProfile description]
+     * @param  {[type]} data [description]
+     * @return {[type]}      [description]
+     */
+    function goToMyProfile(data) {
+        saveUser(data);
+        window.ghProfile.displayMyProfile(ns.user);
+    }
+
+
+    /**
      * save the data retrieved from authenticateToken into the user object
      * to be used later in other views.
      * @param  {Object}   data    user object data returned from authenticateToken
@@ -48,6 +54,7 @@
      */
     function saveUser(data) {
         ns.user = data;
+        console.log(ns.user);
     }
 
 })(window.ghLogin);
