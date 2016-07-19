@@ -1,17 +1,29 @@
-(function(){
+(function(ns){
     'use strict';
+    window.ghLogin = ns = (ns || {});
 
     var $login = $('form.login');
     var $token = $('input[name="token"]');
-    var $user = {};
+    var $myProfile = $('#myProfile');
+    var $loginView = $('section.login');
+    ns.user = {};
 
     $login.on('submit', function(event){
         event.preventDefault();
         $token = $token.val();
-        authenticateToken($token);
+        authenticateToken($token)
+            .done(saveUser);
         console.log($token);
+        $myProfile.show();
+        $loginView.hide();
     });
 
+
+    /**
+     * Send a request to github to authenticate token and retrieve user info.
+     * @param  {String}    token   token the user types into form
+     * @return {jqueryObject}      user object associated with token
+     */
     function authenticateToken(token) {
         return $.ajax({
             url: 'https://api.github.com/user',
@@ -19,29 +31,21 @@
             headers: {'Authorization': 'token ' + token},
             dataType: 'json'
         })
-        .done(saveUser)
-        .fail(function(data){
+        .fail(function(data){ //WHAT SHOULD FAIL DO????
             console.log('token did not validate')
         });
     }
 
+
+    /**
+     * save the data retrieved from authenticateToken into the user object
+     * to be used later in other views.
+     * @param  {Object}   data    user object data returned from authenticateToken
+     * @return {void}
+     */
     function saveUser(data) {
-        $user = data;
-        console.log(data);
-        console.log($user);
-        retrieveRepositories($user.login)
-            .done(function (data){
-                console.log(data);
-            });
+        ns.user = data;
+        console.log(ns.user);
     }
 
-    function retrieveRepositories(username){
-        return $.ajax({
-            url: 'https://api.github.com/users/' + username + '/repos',
-            method: 'get',
-            headers: {'Authorization': 'token ' + $token},
-            dataType: 'json'
-        });
-    }
-
-})();
+})(window.ghLogin);
