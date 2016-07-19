@@ -19,8 +19,14 @@
             dataType: 'json'
         })
         .done(function(data){
+            user.username = data.login;
+            user.name = data.name;
+            user.repos = data.public_repos;
+            user.followers = data.followers;
+            user.following = data.following;
+            user.accountCreated = data.created_at;
             console.log('token validated')
-            console.log(data);
+            console.log(user);
         })
         .fail(function(data){
             console.log('token did not validate')
