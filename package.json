@@ -1,0 +1,22 @@
+{
+  "name": "git-hub-tracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csaminak/GitHubTracker.git"
+  },
+  "author": "Samina Chhatwal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/csaminak/GitHubTracker/issues"
+  },
+  "homepage": "https://github.com/csaminak/GitHubTracker#readme"
+}
