@@ -6,13 +6,10 @@
 
     window.addEventListener('load', function(){
         ns.loadView('#login');
-        $('#login').show();
-        $navBar.hide();
     });
 
     window.addEventListener('hashchange', function(){
         ns.loadView(window.location.hash);
-        $navBar.show();
     });
 
 
@@ -22,7 +19,7 @@
         $('.view').hide();
 
         var viewBase = viewHash.split('/')[0];
-        var $view = $(viewBase); //makes viewbase the view id.
+        var $view = $(viewBase);
 
         $('.nav > li')
             .removeClass('active')
