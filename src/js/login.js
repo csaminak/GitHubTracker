@@ -5,7 +5,7 @@
 
     ns.login = {};
 
-    ns.login.load = function initLogin() {
+    ns.login.loadView = function initLogin() {
         window.location.hash = '#login';
     };
 

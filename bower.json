@@ -1,0 +1,21 @@
+{
+  "name": "git-hub-tracker",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Samina Chhatwal"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/csaminak/GitHubTracker",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/js/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}

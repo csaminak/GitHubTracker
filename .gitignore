@@ -1,2 +1,4 @@
 .DS_Store
 src/sass/.sass-cache/
+node_modules/
+src/js/vendor

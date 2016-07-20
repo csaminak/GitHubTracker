@@ -4,7 +4,7 @@
 
     ns.myProfile = {};
 
-    ns.myProfile.load = function initMyProfile() {
+    ns.myProfile.loadView = function initMyProfile() {
         displayMyProfile(window.spa.user);
     };
 
