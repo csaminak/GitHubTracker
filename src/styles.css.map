@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": "",
-"sources": [],
+"mappings": "AAAA,GAAI;EACA,OAAO,EAAE,IAAI",
+"sources": ["sass/_nav.scss"],
 "names": [],
 "file": "styles.css"
 }
