@@ -12,11 +12,11 @@
         return $.ajax({
             url: 'https://api.github.com/users/' + username + '/repos',
             method: 'get',
-            headers: {'Authorization': 'token ' + $token},
+            headers: {'Authorization': 'token ' + window.spa.user.token},
             dataType: 'json'
         });
     }
-    
+
 
 
 

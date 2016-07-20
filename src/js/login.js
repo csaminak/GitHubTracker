@@ -9,9 +9,9 @@
     };
 
 
-    ns.user = {};
     var $loginForm = $('.loginForm');
     var $token = $('input[name="token"]');
+    ns.user = { token: $token };
 
     $loginForm.on('submit', function getMyProfile(event){
         event.preventDefault();
@@ -34,8 +34,8 @@
             headers: {'Authorization': 'token ' + token},
             dataType: 'json'
         })
-        .fail(function(data){ //WHAT SHOULD FAIL DO????
-            console.log('token did not validate')
+        .fail(function(xhr){ //WHAT SHOULD FAIL DO????
+            console.log('token did not validate', xhr);
         });
     }
 
