@@ -3,6 +3,7 @@
     window.spa = ns = (ns || {});
 
     var $navBar = $('nav');
+    var $login = $('#login');
 
     window.addEventListener('load', function(){
         ns.loadView('#login');
@@ -28,10 +29,14 @@
                     .addClass('active');
 
         if(!$view.length) {
-            $view = $('#login');
+            $view = $login;
         }
 
         $view.show();
+        if(viewHash !== '#login') { //
+            $navBar.show();
+            $login.hide();
+        }
 
         if(ns[viewBase.substr(1)] && ns[viewBase.substr(1)].loadView) {
             ns[viewBase.substr(1)].loadView( viewHash );
