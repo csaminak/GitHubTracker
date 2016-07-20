@@ -12,10 +12,11 @@
     var $myProfile = $('#myProfile');
     var $loginView = $('section.login');
     var $nav = $('.nav');
+    var $avatar = $('.avatar');
 
     function displayMyProfile(user) {
-        $myProfile
-            .prepend('<img src="' + user.avatar_url + '" class="avatar" alt="userLogo" >');
+        $avatar
+            .attr('src="' + user.avatar_url + '" alt="userLogo">');
         console.log(user.avatar_url);
     };
 
