@@ -17,6 +17,7 @@
     function displayMyProfile(user) {
         $avatar
             .attr('src="' + user.avatar_url + '" alt="userLogo">');
+        
         console.log(user.avatar_url);
     };
 
