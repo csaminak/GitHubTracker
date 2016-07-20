@@ -4,25 +4,21 @@
 
 
     ns.login = {};
-
     ns.login.loadView = function initLogin() {
         window.location.hash = '#login';
     };
 
 
-
-
+    ns.user = {};
     var $loginForm = $('.loginForm');
     var $token = $('input[name="token"]');
-
-    ns.user = {};
 
     $loginForm.on('submit', function getMyProfile(event){
         event.preventDefault();
         $token = $token.val();
         console.log($token);
         authenticateToken($token)
-            .done(goToMyProfile);
+            .done(enterMyProfile);
     });
 
 
@@ -49,9 +45,10 @@
      * @param  {Object} data    user object data returned from authenticateToken
      * @return {void}
      */
-    function goToMyProfile(data) {
+    function enterMyProfile(data) {
         ns.user = data;
         window.location.hash = '#myProfile';
+        console.log(ns.user);
     }
 
 
