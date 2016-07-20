@@ -9,16 +9,17 @@
     </head>
     <body>
 
-    <section class='login view'>
+    <section id='#login'>
         <p>Please enter your GitHub Token to login</p>
-        <form class='login' action='' method='get'> <!--what action-->
+        <form class='loginForm' action='' method='get'> <!--what action-->
             <input name='token' type='text' placeholder='GitHub API Token'>
             <input type='submit' value='Login'>
         </form>
     </section>
 
-    <nav class='nav view'>
+    <nav>
         <ul class='nav nav-tabs'>
+            <li><a href='#login'></a></li>
             <li><a href='#myProfile'>My Profile</a></li>
             <li><a href='#repos'>Repos</a></li>
             <li><a href='#repoDetail'>Repo Detail</a></li>

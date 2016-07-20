@@ -1,10 +1,19 @@
 (function(ns){
     'use strict';
-    window.ghLogin = ns = (ns || {});
+    window.spa = ns = (ns || {});
 
-    var $loginForm = $('form.login');
+
+    ns.login = {};
+
+    ns.login.load = function initLogin() {
+        window.location.hash = '#login';
+    };
+
+
+
+
+    var $loginForm = $('.loginForm');
     var $token = $('input[name="token"]');
-
 
     ns.user = {};
 
@@ -34,27 +43,17 @@
         });
     }
 
-
-    /**
-     * [goToMyProfile description]
-     * @param  {[type]} data [description]
-     * @return {[type]}      [description]
-     */
-    function goToMyProfile(data) {
-        saveUser(data);
-        window.ghProfile.displayMyProfile(ns.user);
-    }
-
-
     /**
      * save the data retrieved from authenticateToken into the user object
-     * to be used later in other views.
-     * @param  {Object}   data    user object data returned from authenticateToken
+     * to be used later in other views, then set the path to #myProfile.
+     * @param  {Object} data    user object data returned from authenticateToken
      * @return {void}
      */
-    function saveUser(data) {
+    function goToMyProfile(data) {
         ns.user = data;
-        console.log(ns.user);
+        window.location.hash = '#myProfile';
     }
 
-})(window.ghLogin);
+
+
+})(window.spa);
