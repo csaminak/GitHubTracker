@@ -36,8 +36,8 @@
 
         $view.show();
 
-        if(ns[viewBase.substr(1)] && ns[viewBase.substr(1)].load) {
-            ns[viewBase.substr(1)].load( viewHash );
+        if(ns[viewBase.substr(1)] && ns[viewBase.substr(1)].loadView) {
+            ns[viewBase.substr(1)].loadView( viewHash );
         }
     };
 
