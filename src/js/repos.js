@@ -2,18 +2,34 @@
     'use strict';
     window.ghTracker = ns = (ns || {});
 
-    ns.repos = {};
-    ns.repos.loadView = function initRepos() {
-        window.location.hash = '#repos';
-        retrieveRepositories(ns.user.login);
-        console.log(ns.user.login);
-    };
 
+    var $repos = $('#repos');
+    var repoData = [];
+    var 
 
+    $repos.on('click', repoView); //TODO store into nav function?
 
-    function displayRepos(repoData){
-        console.log('this is repoData from display: ', repoData)
+    /**
+     * Will take the data retrieved from the retrieveRepositories ajax call,
+     * using userlogin info, and pass it into displayRepos.
+     * @return {void}
+     */
+    function repoView() {
+        retrieveRepositories(ns.user.login)
+            .done(displayRepos);
     }
+
+    /**
+     * takes each object in the
+     * @param  {Array}  repoData   An array with objects each object as a repo.
+     * @return {void}
+     */
+    function displayRepos(repoData){
+        repoData.forEach(function(repo){
+
+        });
+    }
+
 
     /**
      * Take the username/login from the user object and input into url to access
@@ -29,9 +45,9 @@
             headers: {'Authorization': 'token ' + window.ghTracker.$token},
             dataType: 'json'
         })
-        .done(function saveRepos(repoData){
-            ns.repos += repoData;
-            console.log(ns.repos);
+        .done(function saveRepos(data){
+            repoData = data;
+            console.log(repoData);
         })
         .fail(function(xhr){ //TODO WHAT SHOULD FAIL DO????
             console.log(xhr);
