@@ -5,7 +5,7 @@
 
     var $repos = $('#repos');
     var repoData = [];
-    var 
+    var
 
     $repos.on('click', repoView); //TODO store into nav function?
 
@@ -16,7 +16,9 @@
      */
     function repoView() {
         retrieveRepositories(ns.user.login)
-            .done(displayRepos);
+            .done(function (repoData){
+                console.log(repoData);
+            });
     }
 
     /**
@@ -24,11 +26,11 @@
      * @param  {Array}  repoData   An array with objects each object as a repo.
      * @return {void}
      */
-    function displayRepos(repoData){
-        repoData.forEach(function(repo){
-
-        });
-    }
+    // function displayRepos(repoData){
+    //     repoData.forEach(function(repo){
+    //
+    //     });
+    // }
 
 
     /**
