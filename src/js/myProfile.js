@@ -3,6 +3,8 @@
     window.ghTracker = ns = (ns || {});
 
     var $avatar = $('.avatar');
+    var $username = $('.username');
+    var $name = $
 
     /**
      * Uses user information retrieved from login and displays it.
@@ -12,6 +14,7 @@
     ns.displayMyProfile = function displayMyProfile(user) {
         $avatar
             .attr('src', user.avatar_url);
+
 
     };
 
