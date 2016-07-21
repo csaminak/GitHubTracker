@@ -2,7 +2,6 @@
     'use strict';
     window.ghTracker = ns = (ns || {});
 
-
     var $loginForm = $('.loginForm');
     ns.$token = $('input[name="token"]');
 
