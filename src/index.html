@@ -5,11 +5,11 @@
         <title>GitHub Tracker</title>
 
         <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-        <link href='styles.css' rel='stylesheet' type='text/css'>
+        <link href='css/styles.css' rel='stylesheet' type='text/css'>
     </head>
     <body>
 
-    <section id='login'>
+    <section id='login'class='view'>
         <p>Please enter your GitHub Token to login</p>
         <form class='loginForm' action='' method='get'> <!--what action-->
             <input name='token' type='text' placeholder='GitHub API Token'>
@@ -23,6 +23,7 @@
             <li><a href='#myProfile'>My Profile</a></li>
             <li><a href='#repos'>Repos</a></li>
             <li><a href='#repoDetail'>Repo Detail</a></li>
+            <li><a href='#help'>Help</a></li>
         </ul>
         <button class='logout' value=''>Logout</button>
     </nav>
@@ -68,11 +69,14 @@
         </ul>
     </section>
 
-    <script src='js/jquery3.0.js'></script>
-    <script src='js/login.js'></script>
-    <script src='js/nav.js'></script>
-    <script src='js/myProfile.js'></script>
-    <script src='js/repos.js'></script>
-    <script src='js/repoDetail.js'></script>
+    <section id='help' class='view'>
+        <h2>Help Topics</h2>
+
+        <p>This is help text...</p>
+    </section>
+
+    <script src='js/vendor/jquery/dist/jquery.min.js'></script>
+    <script src='js/main.js'></script>
+
     </body>
 </html>

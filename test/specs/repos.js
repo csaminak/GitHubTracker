@@ -1,6 +1,7 @@
 (function(){
     'use strict';
+    // var assert = window.chai.assert;
 
-    var assert = chai.assert;
+
 
 })();

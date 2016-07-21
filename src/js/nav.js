@@ -1,6 +1,6 @@
 (function(ns){
     'use strict';
-    window.spa = ns = (ns || {});
+    window.ghTracker = ns = (ns || {});
 
     var $navBar = $('nav');
     var $login = $('#login');
@@ -12,7 +12,6 @@
     window.addEventListener('hashchange', function(){
         ns.loadView(window.location.hash);
     });
-
 
 
 
@@ -33,9 +32,8 @@
         }
 
         $view.show();
-        if(viewHash !== '#login') { //
+        if(viewHash !== '#login') { //if view is not login, show nav, hide login
             $navBar.show();
-            $login.hide();
         }
 
         if(ns[viewBase.substr(1)] && ns[viewBase.substr(1)].loadView) {
@@ -43,4 +41,4 @@
         }
     };
 
-})(window.spa);
+})(window.ghTracker);

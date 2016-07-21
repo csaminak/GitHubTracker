@@ -1,4 +1,6 @@
 .DS_Store
-src/sass/.sass-cache/
+.sass-cache/
 node_modules/
 src/js/vendor
+
+test/specs/test.js

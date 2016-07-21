@@ -1,23 +1,16 @@
 (function(ns){
     'use strict';
-    window.spa = ns = (ns || {});
-
-
-    ns.login = {};
-    ns.login.loadView = function initLogin() {
-        window.location.hash = '#login';
-    };
+    window.ghTracker = ns = (ns || {});
 
 
     var $loginForm = $('.loginForm');
-    var $token = $('input[name="token"]');
-    ns.user = { token: $token };
+    ns.$token = $('input[name="token"]');
 
     $loginForm.on('submit', function getMyProfile(event){
         event.preventDefault();
-        $token = $token.val();
-        console.log($token);
-        authenticateToken($token)
+        ns.$token = ns.$token.val();
+        console.log(ns.$token);
+        authenticateToken(ns.$token)
             .done(enterMyProfile);
     });
 
@@ -42,15 +35,15 @@
     /**
      * save the data retrieved from authenticateToken into the user object
      * to be used later in other views, then set the path to #myProfile.
-     * @param  {Object} data    user object data returned from authenticateToken
+     * @param  {Object}   data    user object data returned from authenticateToken
      * @return {void}
      */
     function enterMyProfile(data) {
-        ns.user = data;
         window.location.hash = '#myProfile';
-        console.log(ns.user);
+        window.ghTracker.displayMyProfile(data);
+        console.log(data);
     }
 
 
 
-})(window.spa);
+})(window.ghTracker);

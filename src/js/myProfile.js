@@ -1,21 +1,19 @@
 (function(ns){
     'use strict';
-    window.spa = ns = (ns || {});
-
+    window.ghTracker = ns = (ns || {});
 
     var $avatar = $('.avatar');
 
-    ns.myProfile = {};
-    ns.myProfile.loadView = function initMyProfile() {
-        displayMyProfile(ns.user);
-        console.log(ns.user);
+    /**
+     * Uses user information retrieved from login and displays it.
+     * @param  {Object}     user    user object saved on the namespace.
+     * @return {void}
+     */
+    ns.displayMyProfile = function displayMyProfile(user) {
+        $avatar
+            .attr('src', user.avatar_url);
+
     };
 
 
-    function displayMyProfile(user) {
-        $avatar
-            .attr('src', user.avatar_url);
-    }
-
-
-})(window.spa);
+})(window.ghTracker);
