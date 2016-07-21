@@ -8,7 +8,6 @@
     $loginForm.on('submit', function getMyProfile(event){
         event.preventDefault();
         ns.$token = ns.$token.val();
-        console.log(ns.$token);
         authenticateToken(ns.$token)
             .done(enterMyProfile);
     });
@@ -37,12 +36,11 @@
      * @param  {Object}   data    user object data returned from authenticateToken
      * @return {void}
      */
-    function enterMyProfile(data) {
+    function enterMyProfile(userData) {
         window.location.hash = '#myProfile';
-        window.ghTracker.displayMyProfile(data);
-        console.log(data);
+        window.ghTracker.displayMyProfile(userData);
+        console.log(userData);
     }
-
 
 
 })(window.ghTracker);
