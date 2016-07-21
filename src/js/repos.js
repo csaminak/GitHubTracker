@@ -3,10 +3,14 @@
     window.ghTracker = ns = (ns || {});
 
 
-    // var $repos = $('#repos');
     var repoData = [];
 
-    repoView();
+    ns.repos = {};
+    ns.repos.loadView = function initRepos() {
+        window.location.hash = '#repos';
+        repoView();
+    };
+
 
     /**
      * Will take the data retrieved from the retrieveRepositories ajax call,
@@ -14,7 +18,7 @@
      * @return {void}
      */
     function repoView() {
-        retrieveRepositories(ns.user.login)
+        retrieveRepositories(window.ghTracker.user.login)
             .done(displayRepos);
     }
 
@@ -24,6 +28,7 @@
      * @return {void}
      */
     function displayRepos(repoData){
+        console.log(repoData);
         repoData.forEach(function(repo){
             console.log(repo);
         });
