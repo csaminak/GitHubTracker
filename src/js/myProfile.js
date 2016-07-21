@@ -31,7 +31,6 @@
         $accntOpen
             .append(user.created_at); //TODO convert into month, day, year
 
-
     };
 
 
