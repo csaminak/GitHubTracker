@@ -29,7 +29,7 @@
         $following
             .append(user.following);
         $accntOpen
-            .append(user.created_at);
+            .append(Date(user.created_at));
 
 
     };
