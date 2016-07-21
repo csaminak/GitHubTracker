@@ -5,8 +5,8 @@
     ns.repos = {};
     ns.repos.loadView = function initRepos() {
         window.location.hash = '#repos';
-        retrieveRepositories(ns.user.login)
-            .done(displayRepos);
+        retrieveRepositories(ns.user.login);
+        console.log(ns.user.login);
     };
 
 
