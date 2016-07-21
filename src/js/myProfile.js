@@ -19,7 +19,7 @@
         $avatar
             .attr('src', user.avatar_url);
         $username
-            .append(user.login);
+            .append('<a href="' + user.html_url + '">' + user.login + '</a>');
         $name
             .append(user.name);
         $repos
