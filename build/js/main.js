@@ -4,6 +4,7 @@
 
     var $loginForm = $('.loginForm');
     ns.$token = $('input[name="token"]');
+    ns.user = {};
 
     $loginForm.on('submit', function getMyProfile(event){
         event.preventDefault();
@@ -25,7 +26,10 @@
             headers: {'Authorization': 'token ' + token},
             dataType: 'json'
         })
-        .fail(function(xhr){ //WHAT SHOULD FAIL DO????
+        .done(function saveUserInfo(data){
+            ns.user = data;
+        })
+        .fail(function(xhr){ //TODO WHAT SHOULD FAIL DO????
             console.log('token did not validate', xhr);
         });
     }
@@ -77,7 +81,6 @@
             .append(user.following);
         $accntOpen
             .append(user.created_at); //TODO convert into month, day, year
-
 
     };
 
@@ -154,10 +157,11 @@
     'use strict';
     window.ghTracker = ns = (ns || {});
 
-    // ns.repos = {};
-    // ns.repos.loadView = function initRepos() {
-    //     window.location.hash = '#repos';
-    // };
+    ns.repos = {};
+    ns.repos.loadView = function initRepos() {
+        window.location.hash = '#repos';
+        retrieveRepositories(ns.user.login);
+    };
 
 
 
@@ -170,14 +174,14 @@
      * @param  {String} username  retrieved from the user object to access repos.
      * @return {Array}            all the repositories associated with the user.
      */
-    // function retrieveRepositories(username){
-    //     return $.ajax({
-    //         url: 'https://api.github.com/users/' + username + '/repos',
-    //         method: 'get',
-    //         headers: {'Authorization': 'token ' + window.ghTracker.$token},
-    //         dataType: 'json'
-    //     });
-    // }
+    function retrieveRepositories(username){
+        return $.ajax({
+            url: 'https://api.github.com/users/' + username + '/repos',
+            method: 'get',
+            headers: {'Authorization': 'token ' + window.ghTracker.$token},
+            dataType: 'json'
+        });
+    }
 
 
 
