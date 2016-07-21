@@ -18,14 +18,15 @@
     ns.displayMyProfile = function displayMyProfile(user) {
         $avatar
             .attr('src', user.avatar_url);
-        $username = user.login;
+        $username
+            .append(user.login);
         $name = user.name;
         $repos = Number(user.public_repos);
         $followers = user.followers;
         $following = user.following;
         $accntOpen = user.created_at;
 
-        
+
     };
 
 
