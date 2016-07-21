@@ -67,11 +67,16 @@
             .attr('src', user.avatar_url);
         $username
             .append(user.login);
-        $name = user.name;
-        $repos = Number(user.public_repos);
-        $followers = user.followers;
-        $following = user.following;
-        $accntOpen = user.created_at;
+        $name
+            .append(user.name);
+        $repos
+            .append(Number(user.public_repos));
+        $followers
+            .append(user.followers);
+        $following
+            .append(user.following);
+        $accntOpen
+            .append(user.created_at);
 
 
     };
