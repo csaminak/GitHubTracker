@@ -3,11 +3,10 @@
     window.ghTracker = ns = (ns || {});
 
 
-    var $repos = $('#repos');
+    // var $repos = $('#repos');
     var repoData = [];
-    var
 
-    $repos.on('click', repoView); //TODO store into nav function?
+    repoView();
 
     /**
      * Will take the data retrieved from the retrieveRepositories ajax call,
@@ -16,21 +15,19 @@
      */
     function repoView() {
         retrieveRepositories(ns.user.login)
-            .done(function (repoData){
-                console.log(repoData);
-            });
+            .done(displayRepos);
     }
 
     /**
-     * takes each object in the
+     * takes each object and displays the specified content.
      * @param  {Array}  repoData   An array with objects each object as a repo.
      * @return {void}
      */
-    // function displayRepos(repoData){
-    //     repoData.forEach(function(repo){
-    //
-    //     });
-    // }
+    function displayRepos(repoData){
+        repoData.forEach(function(repo){
+            console.log(repo);
+        });
+    }
 
 
     /**
