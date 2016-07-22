@@ -164,10 +164,7 @@
     ns.repos = {};
     ns.repos.loadView = function initRepos() {
         window.location.hash = '#repos';
-        if(displayRepos) {
-            return;
-        }
-        repoView();
+        repoView().one();
     };
 
 
