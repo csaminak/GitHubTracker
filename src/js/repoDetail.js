@@ -11,7 +11,6 @@
     ns.displaySelectedRepo = function displaySelectedRepo(repo) {
         $('.nav')
             .append('<li><a href=#repoDetail>Repo Detail</a></li>');
-        window.location.hash = '#repoDetail';
         $('#repoDetail h2')
             .html(repo.name);
         $('#repoDetail p')
