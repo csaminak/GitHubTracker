@@ -8,6 +8,25 @@
         //needs to run some ajax call to find the specific data that needs to be shown.
     };
 
+    ns.displaySelectedRepo = function displaySelectedRepo(repo) {
+        $('.nav')
+            .append('<li><a href=#repoDetail>Repo Detail</a></li>');
+        window.location.hash = '#repoDetail';
+        $('#repoDetail h2')
+            .html(repo.name);
+        $('#repoDetail p')
+            .html(repo.description);
+        $('.owner')
+            .append(repo.owner.login);
+        $('.stars')
+            .append(repo.stargazers_count);
+        $('.forks')
+            .append(repo.forks);
+        $('.createDate')
+            .append(repo.created_at);
+        console.log(repo);
+    };
+
 
 
 })(window.ghTracker);
