@@ -36,6 +36,7 @@
         if(viewHash !== '#login') { //if view is not login, show nav, hide login
             $navBar.show();
         }
+        
         if(viewHash !== '#repoDetail') {
             $('nav [href=#repoDetail]').parent().hide();
         }
