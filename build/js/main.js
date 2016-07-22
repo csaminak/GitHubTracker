@@ -143,6 +143,25 @@
         //needs to run some ajax call to find the specific data that needs to be shown.
     };
 
+    ns.displaySelectedRepo = function displaySelectedRepo(repo) {
+        $('.nav')
+            .append('<li><a href=#repoDetail>Repo Detail</a></li>');
+        window.location.hash = '#repoDetail';
+        $('#repoDetail h2')
+            .html(repo.name);
+        $('#repoDetail p')
+            .html(repo.description);
+        $('.owner')
+            .append(repo.owner.login);
+        $('.stars')
+            .append(repo.stargazers_count);
+        $('.forks')
+            .append(repo.forks);
+        $('.createDate')
+            .append(repo.created_at);
+        console.log(repo);
+    };
+
 
 
 })(window.ghTracker);
@@ -184,9 +203,11 @@
                 .append('<tr>\
                         <td class="repoName"><a>' + repo.name + '</a></td>\
                         <td class="stars">' + repo.stargazers_count + '</td>\
-                        <td class="openIssues">' + repo.open_issues_count + '</td>\
+                        <td class="openIssues">' + repo.open_issues + '</td>\
                         </tr>');
-            console.log(repo);
+            $('.repoName a').on('click', function enterRepo(event){
+                window.ghTracker.displaySelectedRepo(event.target, repo);
+            });
         });
     }
 
