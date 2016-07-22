@@ -42,12 +42,8 @@
                             <td class="openIssues">' + repo.open_issues + '</td>\
                         </tr>');
         });
-        $('.repoName a').on('click', function enterRepo(event){
-            var repo = event.target;
-            window.ghTracker.displaySelectedRepo(repo);
-        });
     }
-
+    
 
     /**
      * Take the username/login from the user object and input into url to access
