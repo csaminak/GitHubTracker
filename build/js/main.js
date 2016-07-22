@@ -178,11 +178,6 @@
         repoView();
     };
 
-    $('.repoName a').on('click', function enterRepo(event){
-        var repo = event.target;
-        window.ghTracker.displaySelectedRepo(repo);
-    });
-
 
     /**
      * Will take the data retrieved from the retrieveRepositories ajax call,
@@ -209,6 +204,10 @@
                         <td class="stars">' + repo.stargazers_count + '</td>\
                         <td class="openIssues">' + repo.open_issues + '</td>\
                         </tr>');
+        });
+        $('.repoName a').on('click', function enterRepo(event){
+            var repo = event.target;
+            window.ghTracker.displaySelectedRepo(repo);
         });
     }
 
