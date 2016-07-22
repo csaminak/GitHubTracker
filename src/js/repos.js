@@ -9,8 +9,8 @@
     ns.repos = {};
     ns.repos.loadView = function initRepos() {
         window.location.hash = '#repos';
-        if(retrieveRepositories) {
-            displayRepos(repoData);
+        if(displayRepos) {
+            return;
         } else {
             repoView();
         }
