@@ -185,15 +185,13 @@
      * @return {void}
      */
     function displayRepos(repoData){
-        console.log(repoData);
         repoData.forEach(function(repo){
             $reposTable //TODO Need to update where repo anchor will go to, load repoDetail
                 .append('<tr>\
-                        <td class="repoName"><a>' + repo.name + '</a></td>\
+                        <td class="repoName"><a href="#repoDetail">' + repo.name + '</a></td>\
                         <td class="stars">' + repo.stargazers_count + '</td>\
                         <td class="openIssues">' + repo.open_issues_count + '</td>\
                         </tr>');
-            console.log(repo);
         });
     }
 
@@ -214,7 +212,6 @@
         })
         .done(function saveRepos(data){
             repoData = data;
-            console.log(repoData);
         })
         .fail(function(xhr){ //TODO WHAT SHOULD FAIL DO????
             console.log(xhr);
