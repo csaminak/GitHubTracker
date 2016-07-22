@@ -17,7 +17,7 @@
         $('#repoDetail p')
             .html(repo.description);
         $('.owner')
-            .append(repo.owner.login);
+            .append(window.ghTracker.user.login);
         $('.stars')
             .append(repo.stargazers_count);
         $('.forks')

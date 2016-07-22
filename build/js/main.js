@@ -152,7 +152,7 @@
         $('#repoDetail p')
             .html(repo.description);
         $('.owner')
-            .append(repo.owner.login);
+            .append(ns.user.login);
         $('.stars')
             .append(repo.stargazers_count);
         $('.forks')
