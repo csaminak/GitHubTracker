@@ -37,8 +37,8 @@
                         <td class="stars">' + repo.stargazers_count + '</td>\
                         <td class="openIssues">' + repo.open_issues_count + '</td>\
                         </tr>');
+            console.log(repo);
         });
-        console.log(repo);
     }
 
 
