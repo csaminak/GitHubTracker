@@ -9,7 +9,7 @@
     ns.repos = {};
     ns.repos.loadView = function initRepos() {
         window.location.hash = '#repos';
-        repoView().one();
+        repoView();
     };
 
 
