@@ -35,9 +35,11 @@
                 .append('<tr>\
                         <td class="repoName"><a>' + repo.name + '</a></td>\
                         <td class="stars">' + repo.stargazers_count + '</td>\
-                        <td class="openIssues">' + repo.open_issues_count + '</td>\
+                        <td class="openIssues">' + repo.open_issues + '</td>\
                         </tr>');
-            console.log(repo);
+            $('.repoName a').on('click', function enterRepo(event){
+                window.ghTracker.displaySelectedRepo(event.target, repo);
+            });
         });
     }
 
