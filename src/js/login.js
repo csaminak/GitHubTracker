@@ -43,7 +43,6 @@
     function enterMyProfile(userData) {
         window.location.hash = '#myProfile';
         window.ghTracker.displayMyProfile(userData);
-        console.log(userData);
     }
 
 

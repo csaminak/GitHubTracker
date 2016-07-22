@@ -43,7 +43,6 @@
     function enterMyProfile(userData) {
         window.location.hash = '#myProfile';
         window.ghTracker.displayMyProfile(userData);
-        console.log(userData);
     }
 
 
@@ -167,6 +166,9 @@
         })
         .done(function saveRepo(data){
             repo = data;
+        })
+        .fail(function(xhr){
+            console.log(xhr); //TODO WHAT SHOULD FAIL DO????
         });
     }
 
@@ -189,7 +191,6 @@
             .append(repo.forks);
         $('.createDate')
             .append(repo.created_at); //TODO change date format
-        console.log(repo);
     }
 
 
