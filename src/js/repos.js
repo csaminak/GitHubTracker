@@ -11,9 +11,8 @@
         window.location.hash = '#repos';
         if(displayRepos) {
             return;
-        } else {
-            repoView();
         }
+        repoView();
     };
 
 
