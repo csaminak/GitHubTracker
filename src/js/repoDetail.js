@@ -2,13 +2,17 @@
     'use strict';
     window.ghTracker = ns = (ns || {});
 
+    var repo;
+
     ns.repoDetail = {};
     ns.repoDetail.loadView = function initRepoDetail(viewHash) {
         var selectedRepo = viewHash.split('/');
         var username = selectedRepo[1];
         var repoName = selectedRepo[2];
-        requestRepoData(username, repoName)
-            .done(displayRepoDetail);
+        if(!repo) {
+            requestRepoData(username, repoName)
+                .done(displayRepoDetail);
+        }
     };
 
     /**
@@ -25,6 +29,9 @@
             method: 'get',
             headers: {'Authorization': 'token ' + window.ghTracker.$token},
             dataType: 'json'
+        })
+        .done(function saveRepo(data){
+            repo = data;
         });
     }
 
