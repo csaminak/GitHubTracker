@@ -33,9 +33,13 @@
         repoData.forEach(function(repo){
             $reposTable //TODO Need to update where repo anchor will go to, load repoDetail
                 .append('<tr>\
-                        <td class="repoName"><a>' + repo.name + '</a></td>\
-                        <td class="stars">' + repo.stargazers_count + '</td>\
-                        <td class="openIssues">' + repo.open_issues + '</td>\
+                            <td class="repoName">\
+                            <a href="#repoDetail/'+ repo.owner.login + '/' + repo.name + '">' +
+                            repo.name +
+                            '</a>\
+                            </td>\
+                            <td class="stars">' + repo.stargazers_count + '</td>\
+                            <td class="openIssues">' + repo.open_issues + '</td>\
                         </tr>');
         });
         $('.repoName a').on('click', function enterRepo(event){
