@@ -3,12 +3,11 @@
     window.ghTracker = ns = (ns || {});
 
 
-    var repoData = [];
+    var repoData;
     var $reposTable = $('#repos .table');
 
     ns.repos = {};
     ns.repos.loadView = function initRepos() {
-        window.location.hash = '#repos';
         repoView();
     };
 
@@ -19,8 +18,10 @@
      * @return {void}
      */
     function repoView() {
-        retrieveRepositories(window.ghTracker.user.login)
-            .done(displayRepos);
+        if(!repoData){
+            retrieveRepositories(window.ghTracker.user.login)
+                .done(displayRepos);
+        }
     }
 
     /**
