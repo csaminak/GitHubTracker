@@ -199,16 +199,19 @@
             .html('<a href="' + repoUrl + '">' + name + '</a>');
         $('#repoDetail p')
             .html(description);
-        $('#repoDetail h3')
-            .html('<a href="' + repoUrl + '/issues">' + issuesCount + 'open issues</a>');
+        $('.issuesCount')
+            .parent()
+                .attr('href', repoUrl + '/issues');
+        $('.issuesCount')
+            .html(issuesCount);
         $('.owner')
-            .append(username);
+            .html(username);
         $('.stars')
-            .append(stars);
+            .html(stars);
         $('.forks')
-            .append(forks);
+            .html(forks);
         $('.createDate')
-            .append(createdDate); //TODO change date format
+            .html(createdDate); //TODO change date format
     }
 
 
