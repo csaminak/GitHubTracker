@@ -66,6 +66,7 @@
      * @return {void}
      */
     ns.displayMyProfile = function displayMyProfile(user) {
+        var date = (user.created_at).slice(0,10);
         $avatar
             .attr('src', user.avatar_url);
         $username
@@ -79,8 +80,7 @@
         $following
             .append(user.following);
         $accntOpen
-            .append(user.created_at); //TODO convert into month, day, year
-
+            .append(date);
     };
 
 
@@ -197,7 +197,7 @@
         var description = repoData.description;
         var stars = repoData.stargazers_count;
         var forks = repoData.forks;
-        var createdDate = repoData.created_at;
+        var createdDate = repoData.created_at.slice(0,10);
 
         $($repoDetail + ' h2')
             .html('<a href="' + repoUrl + '">' + name + '</a>');
@@ -215,9 +215,9 @@
         $forks
             .html(forks);
         $createDate
-            .html(createdDate); //TODO change date format
+            .html(createdDate);
     }
-    
+
 
 })(window.ghTracker);
 

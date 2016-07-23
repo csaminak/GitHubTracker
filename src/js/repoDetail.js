@@ -57,7 +57,7 @@
         var description = repoData.description;
         var stars = repoData.stargazers_count;
         var forks = repoData.forks;
-        var createdDate = repoData.created_at;
+        var createdDate = repoData.created_at.slice(0,10);
 
         $($repoDetail + ' h2')
             .html('<a href="' + repoUrl + '">' + name + '</a>');
@@ -75,8 +75,8 @@
         $forks
             .html(forks);
         $createDate
-            .html(createdDate); //TODO change date format
+            .html(createdDate);
     }
-    
+
 
 })(window.ghTracker);
