@@ -2,18 +2,25 @@
     'use strict';
     window.ghTracker = ns = (ns || {});
 
-    var repo;
+    var repoData;
 
     ns.repoDetail = {};
     ns.repoDetail.loadView = function initRepoDetail(viewHash) {
         var selectedRepo = viewHash.split('/');
         var username = selectedRepo[1];
         var repoName = selectedRepo[2];
-        if(!repo) {
+        console.log(selectedRepo);
+        console.log(repoName);
+        console.log(viewHash);
+        if(!repoData) {
+            requestRepoData(username, repoName)
+                .done(displayRepoDetail);
+        } else if (repoData.name !== repoName) {
             requestRepoData(username, repoName)
                 .done(displayRepoDetail);
         }
     };
+
 
     /**
      * Uses the viewHash string passed in from loadView and splits it into an
@@ -25,13 +32,14 @@
      */
     function requestRepoData(username, repoName){
         return $.ajax({
-            url: 'https://api.github.com/repos/' + username + '/' + repoName + '',
+            url: 'https://api.github.com/repos/' + username + '/' + repoName,
             method: 'get',
             headers: {'Authorization': 'token ' + window.ghTracker.$token},
             dataType: 'json'
         })
         .done(function saveRepo(data){
-            repo = data;
+            repoData = data;
+            console.log(repoData);
         })
         .fail(function(xhr){
             console.log(xhr); //TODO WHAT SHOULD FAIL DO????
@@ -44,19 +52,29 @@
      * @param  {Object}     repo    repo data retrieved from the done promise.
      * @return {void}
      */
-    function displayRepoDetail(repo) {
+    function displayRepoDetail(repoData) {
+        var repoUrl = repoData.html_url;
+        var name = repoData.name;
+        var issuesCount = repoData.open_issues;
+        var username = window.ghTracker.user.login;
+        var description = repoData.description;
+        var stars = repoData.stargazers_count;
+        var forks = repoData.forks;
+        var createdDate = repoData.created_at;
         $('#repoDetail h2')
-            .html(repo.name);
+            .html('<a href="' + repoUrl + '">' + name + '</a>');
         $('#repoDetail p')
-            .html(repo.description);
+            .html(description);
+        $('#repoDetail h3')
+            .html('<a href="' + repoUrl + '/issues">' + issuesCount + 'open issues</a>');
         $('.owner')
-            .append(window.ghTracker.user.login);
+            .append(username);
         $('.stars')
-            .append(repo.stargazers_count);
+            .append(stars);
         $('.forks')
-            .append(repo.forks);
+            .append(forks);
         $('.createDate')
-            .append(repo.created_at); //TODO change date format
+            .append(createdDate); //TODO change date format
     }
 
 
