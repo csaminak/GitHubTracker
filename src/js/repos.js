@@ -3,12 +3,12 @@
     window.ghTracker = ns = (ns || {});
 
 
-    var repoData;
+    var reposData;
     var $reposTable = $('#repos .table');
 
     ns.repos = {};
     ns.repos.loadView = function initRepos() {
-        repoView();
+        reposView();
     };
 
 
@@ -17,33 +17,13 @@
      * using userlogin info, and pass it into displayRepos.
      * @return {void}
      */
-    function repoView() {
-        if(!repoData){
+    function reposView() {
+        if(!reposData){
             retrieveRepositories(window.ghTracker.user.login)
                 .done(displayRepos);
         }
     }
 
-    /**
-     * takes each object and displays the specified content.
-     * @param  {Array}  repoData   An array with objects each object as a repo.
-     * @return {void}
-     */
-    function displayRepos(repoData){
-        repoData.forEach(function(repo){
-            $reposTable //TODO Need to update where repo anchor will go to, load repoDetail
-                .append('<tr>\
-                            <td class="repoName">\
-                            <a href="#repoDetail/'+ repo.owner.login + '/' + repo.name + '">' +
-                            repo.name +
-                            '</a>\
-                            </td>\
-                            <td class="stars">' + repo.stargazers_count + '</td>\
-                            <td class="openIssues">' + repo.open_issues + '</td>\
-                        </tr>');
-        });
-    }
-    
 
     /**
      * Take the username/login from the user object and input into url to access
@@ -60,13 +40,33 @@
             dataType: 'json'
         })
         .done(function saveRepos(data){
-            repoData = data;
+            reposData = data;
         })
         .fail(function(xhr){ //TODO WHAT SHOULD FAIL DO????
             console.log(xhr);
         });
     }
 
+
+    /**
+     * takes each object and displays the specified content.
+     * @param  {Array}  repoData   An array with objects each object as a repo.
+     * @return {void}
+     */
+    function displayRepos(reposData){
+        reposData.forEach(function(repo){
+            $reposTable //TODO Need to update where repo anchor will go to, load repoDetail
+                .append('<tr>\
+                            <td class="repoName">\
+                            <a href="#repoDetail/'+ repo.owner.login + '/' + repo.name + '">' +
+                            repo.name +
+                            '</a>\
+                            </td>\
+                            <td class="stars">' + repo.stargazers_count + '</td>\
+                            <td class="openIssues">' + repo.open_issues + '</td>\
+                        </tr>');
+        });
+    }
 
 
 })(window.ghTracker);
