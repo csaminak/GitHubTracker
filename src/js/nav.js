@@ -33,8 +33,14 @@
             $view.show();
         }
 
-        if(viewHash !== '#login') { //if view is not login, show nav, hide login
+        if(viewHash !== '#login') {
             $navBar.show();
+        }
+
+        if(viewBase !== '#repoDetail') {
+            $('.detailTab').hide();
+        } else if(viewBase === '#repoDetail') {
+            $('.detailTab').show();
         }
 
         if(ns[viewBase.substr(1)] && ns[viewBase.substr(1)].loadView) {
