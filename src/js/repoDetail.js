@@ -3,6 +3,13 @@
     window.ghTracker = ns = (ns || {});
 
     var repoData;
+    var $repoDetail = '#repoDetail';
+    var $issuesCount = $('.issuesCount');
+    var $owner = $('.owner');
+    var $stars = $('.stars');
+    var $forks = $('.forks');
+    var $createDate = $('.createDate');
+
 
     ns.repoDetail = {};
     ns.repoDetail.loadView = function initRepoDetail(viewHash) {
@@ -12,13 +19,8 @@
         console.log(selectedRepo);
         console.log(repoName);
         console.log(viewHash);
-        if(!repoData) {
-            requestRepoData(username, repoName)
-                .done(displayRepoDetail);
-        } else if (repoData.name !== repoName) {
-            requestRepoData(username, repoName)
-                .done(displayRepoDetail);
-        }
+        requestRepoData(username, repoName)
+            .done(displayRepoDetail);
     };
 
 
@@ -39,7 +41,6 @@
         })
         .done(function saveRepo(data){
             repoData = data;
-            console.log(repoData);
         })
         .fail(function(xhr){
             console.log(xhr); //TODO WHAT SHOULD FAIL DO????
@@ -53,20 +54,14 @@
      * @return {void}
      */
     function displayRepoDetail(repoData) {
-        var $repoDetail = '#repoDetail';
         var repoUrl = repoData.html_url;
         var name = repoData.name;
         var issuesCount = repoData.open_issues;
-        var $issuesCount = $('.issuesCount');
         var username = window.ghTracker.user.login;
-        var $owner = $('.owner');
         var description = repoData.description;
         var stars = repoData.stargazers_count;
-        var $stars = $('.stars');
         var forks = repoData.forks;
-        var $forks = $('.forks');
         var createdDate = repoData.created_at;
-        var $createDate = $('.createDate');
 
         $($repoDetail + ' h2')
             .html('<a href="' + repoUrl + '">' + name + '</a>');
