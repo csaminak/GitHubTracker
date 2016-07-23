@@ -187,30 +187,37 @@
      * @return {void}
      */
     function displayRepoDetail(repoData) {
+        var $repoDetail = '#repoDetail';
         var repoUrl = repoData.html_url;
         var name = repoData.name;
         var issuesCount = repoData.open_issues;
+        var $issuesCount = $('.issuesCount');
         var username = window.ghTracker.user.login;
+        var $owner = $('.owner');
         var description = repoData.description;
         var stars = repoData.stargazers_count;
+        var $stars = $('.stars');
         var forks = repoData.forks;
+        var $forks = $('.forks');
         var createdDate = repoData.created_at;
-        $('#repoDetail h2')
+        var $createDate = $('.createDate');
+
+        $($repoDetail + ' h2')
             .html('<a href="' + repoUrl + '">' + name + '</a>');
-        $('#repoDetail p')
+        $($repoDetail + ' p')
             .html(description);
-        $('.issuesCount')
+        $issuesCount
             .parent()
                 .attr('href', repoUrl + '/issues');
-        $('.issuesCount')
+        $issuesCount
             .html(issuesCount);
-        $('.owner')
+        $owner
             .html(username);
-        $('.stars')
+        $stars
             .html(stars);
-        $('.forks')
+        $forks
             .html(forks);
-        $('.createDate')
+        $createDate
             .html(createdDate); //TODO change date format
     }
 
