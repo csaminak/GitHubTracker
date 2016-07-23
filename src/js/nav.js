@@ -5,7 +5,6 @@
     var $navBar = $('nav');
     var $login = $('#login');
 
-
     window.addEventListener('hashchange', function(){
         ns.loadView(window.location.hash);
     });
@@ -47,5 +46,6 @@
             ns[viewBase.substr(1)].loadView( viewHash );
         }
     };
+
 
 })(window.ghTracker);

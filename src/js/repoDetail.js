@@ -10,15 +10,11 @@
     var $forks = $('.forks');
     var $createDate = $('.createDate');
 
-
     ns.repoDetail = {};
     ns.repoDetail.loadView = function initRepoDetail(viewHash) {
         var selectedRepo = viewHash.split('/');
         var username = selectedRepo[1];
         var repoName = selectedRepo[2];
-        console.log(selectedRepo);
-        console.log(repoName);
-        console.log(viewHash);
         requestRepoData(username, repoName)
             .done(displayRepoDetail);
     };
@@ -30,7 +26,7 @@
      * get request to github to retrieve the individual repo object data.
      * @param  {String}    username    used for url for the user who owns the repo
      * @param  {String}    repoName    used for url for the specific repo to get
-     * @return {Object}    the repo object
+     * @return {jquery xhr Object}     the repo object
      */
     function requestRepoData(username, repoName){
         return $.ajax({
@@ -81,7 +77,6 @@
         $createDate
             .html(createdDate); //TODO change date format
     }
-
-
+    
 
 })(window.ghTracker);
