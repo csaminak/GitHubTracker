@@ -1,7 +1,7 @@
 (function(){
     'use strict';
-
     var assert = window.chai.assert;
+
     var tracker = window.ghTracker;
     var fixtures = $('#fixtures').html();
 
@@ -16,7 +16,7 @@
         });
 
         test('is displayMyProfile a function', function() {
-            assert.isFunction(tracker.displayMyProfile(),
+            assert.isFunction(tracker.displayMyProfile,
                                 'displayMyProfile is a function');
 
         });
