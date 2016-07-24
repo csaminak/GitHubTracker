@@ -14,7 +14,6 @@
                 <li><a href='#myProfile'>My Profile</a></li>
                 <li><a href='#repos'>Repos</a></li>
             </ul>
-            <!-- Add nav structure here -->
         </div>
 
         <!-- Libraries used in testing -->
@@ -31,13 +30,12 @@
         <script src='../src/js/myProfile.js'></script>
 
         <!-- the test code -->
-        <script src='specs/login.js'></script>
         <script src='specs/nav.js'></script>
         <script src='specs/myProfile.js'></script>
 
         <script>
             //detect if we are using phantom js
-            if(window.navigation.userAgent.indexOf('PhantomJS') < 0) {
+            if(window.navigator.userAgent.indexOf('PhantomJS') < 0) {
                 mocha.run();
             }
         </script>
