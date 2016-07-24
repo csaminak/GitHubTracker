@@ -91,7 +91,7 @@ module.exports = function(grunt) {
         }
     });
 
-    //loading plugings
+    //loading plugins
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-copy');
