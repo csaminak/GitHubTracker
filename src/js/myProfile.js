@@ -16,7 +16,7 @@
      * @return {void}
      */
     ns.displayMyProfile = function displayMyProfile(user) {
-        var date = (user.created_at).slice(0,10);
+        var date = user.created_at.slice(0,10);
         $avatar
             .attr('src', user.avatar_url);
         $username
