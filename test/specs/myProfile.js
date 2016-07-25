@@ -6,6 +6,8 @@
     var fixtures = $('#fixtures').html();
 
     suite('displayMyProfile', function() {
+        var user = {name: 'samina', created_at: '1234567890'};
+        var $name = $('.name');
 
         setup(function() {
             $('#fixtures').html(fixtures);
@@ -21,12 +23,10 @@
         });
 
         test('does displayMyProfile show the user\'s name', function() {
-            var user = {name: 'samina', created_at: '1234567890'};
-            var $name = $('.name');
             tracker.displayMyProfile(user);
-        //     assert.deepEqual($name.text(), 'Name: ' + user.name,
-        //                             'user\'s name is displayed');
-        // });
+            assert.deepEqual($name.text(), 'Name: ' + user.name,
+                                    'user\'s name is displayed');
+        });
 
 
 
