@@ -9,6 +9,7 @@
     $loginForm.on('submit', function getMyProfile(event){
         event.preventDefault();
         ns.$token = ns.$token.val();
+        console.log(ns.$token);
         authenticateToken(ns.$token)
             .done(enterMyProfile);
     });
@@ -93,6 +94,7 @@
 
     var $navBar = $('nav');
     var $login = $('#login');
+    var $logout = $('.logout');
 
     window.addEventListener('hashchange', function(){
         ns.loadView(window.location.hash);
@@ -135,6 +137,16 @@
             ns[viewBase.substr(1)].loadView( viewHash );
         }
     };
+
+    $logout.on('click', function logout() {
+        console.log(window.ghTracker.$token);
+        window.ghTracker.$token = '';
+        $('input[name="token"]')
+            .val('');
+        window.location.hash = '#login';
+        ns.loadView('#login');
+        $navBar.hide();
+    });
 
 
 })(window.ghTracker);
