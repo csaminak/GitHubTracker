@@ -31,8 +31,8 @@ nav {
     font-weight: bold;
     font-size: 1em;
     padding: 5px; }
-  #myProfile .dataStyle {
-    font-weight: normal; }
+    #myProfile li .dataStyle {
+      font-weight: normal; }
   #myProfile .following {
     font-style: italic; }
   #myProfile .username a:hover {
@@ -46,5 +46,28 @@ nav {
   right: 0;
   margin: 0 25px;
   width: 200px; }
+
+#repos {
+  margin: auto 10%; }
+  #repos .table th {
+    text-align: center;
+    font-weight: bold; }
+  #repos .table a {
+    text-decoration: none;
+    font-weight: bold; }
+
+#repoDetail {
+  margin: 25px 50px auto 50px; }
+  #repoDetail a:hover {
+    text-decoration: none;
+    font-weight: bolder; }
+  #repoDetail ul {
+    padding: 0; }
+  #repoDetail li {
+    list-style: none;
+    font-weight: bold;
+    font-size: 1em; }
+    #repoDetail li .dataStyle {
+      font-weight: normal; }
 
 /*# sourceMappingURL=styles.css.map */
