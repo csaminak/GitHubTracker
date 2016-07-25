@@ -1,4 +1,15 @@
+#login {
+  margin-top: 50px;
+  text-align: center; }
+
 nav {
-  display: none; }
+  display: none;
+  margin-top: 50px;
+  position: relative; }
+
+.logout {
+  position: absolute;
+  bottom: 0;
+  right: 0; }
 
 /*# sourceMappingURL=styles.css.map */

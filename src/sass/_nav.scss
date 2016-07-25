@@ -1,3 +1,11 @@
 nav {
     display: none;
+    margin-top: $topMargin;
+    position: relative;
+}
+
+.logout {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
