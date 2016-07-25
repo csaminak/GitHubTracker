@@ -31,6 +31,7 @@
         })
         .fail(function(xhr){ //TODO WHAT SHOULD FAIL DO????
             console.log('token did not validate', xhr);
+            //401- unauthorized (need token)
         });
     }
 
@@ -66,7 +67,7 @@
      * @return {void}
      */
     ns.displayMyProfile = function displayMyProfile(user) {
-        var date = (user.created_at).slice(0,10);
+        var date = user.created_at.slice(0,10);
         $avatar
             .attr('src', user.avatar_url);
         $username

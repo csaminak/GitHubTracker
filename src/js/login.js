@@ -31,6 +31,7 @@
         })
         .fail(function(xhr){ //TODO WHAT SHOULD FAIL DO????
             console.log('token did not validate', xhr);
+            //401- unauthorized (need token)
         });
     }
 
