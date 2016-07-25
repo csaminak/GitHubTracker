@@ -3,6 +3,7 @@
     window.ghTracker = ns = (ns || {});
 
     var $loginForm = $('.loginForm');
+    var $loginView = $('#login');
     ns.$token = $('input[name="token"]');
     ns.user = {};
 
@@ -29,10 +30,7 @@
         .done(function saveUserInfo(data){
             ns.user = data;
         })
-        .fail(function(xhr){ //TODO WHAT SHOULD FAIL DO????
-            console.log('token did not validate', xhr);
-            //401- unauthorized (need token)
-        });
+        .fail(error);
     }
 
     /**
@@ -46,6 +44,22 @@
         window.ghTracker.displayMyProfile(userData);
     }
 
+    /**
+     * login possible error messages
+     * @param  {jquery xhr Object}  contains the possible error status codes
+     * @return {void}
+     */
+    function error(xhr) {
+        if (xhr.status === 401) {
+            console.log('Access is unauthorized because a token is required or incorrect.');
+            $loginView
+                .append('<p>Token is required, please input the correct id.</p>');
+        } else if (xhr.status >= 500) {
+            console.log('Server side error');
+            $loginView
+                .append('<p>I\'m sorry, GitHub cannot be accessed right now.</p>');
+        }
+    }
 
 })(window.ghTracker);
 
