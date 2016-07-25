@@ -11,7 +11,8 @@
         event.preventDefault();
         ns.$token = ns.$token.val();
         authenticateToken(ns.$token)
-            .done(enterMyProfile);
+            .done(enterMyProfile)
+            .fail(error);
     });
 
 
@@ -29,8 +30,7 @@
         })
         .done(function saveUserInfo(data){
             ns.user = data;
-        })
-        .fail(error);
+        });
     }
 
     /**
@@ -175,6 +175,7 @@
     var $stars = $('.stars');
     var $forks = $('.forks');
     var $createDate = $('.createDate');
+    var $repoDetailView = $('#repoDetail');
 
     ns.repoDetail = {};
     ns.repoDetail.loadView = function initRepoDetail(viewHash) {
@@ -204,9 +205,7 @@
         .done(function saveRepo(data){
             repoData = data;
         })
-        .fail(function(xhr){
-            console.log(xhr); //TODO WHAT SHOULD FAIL DO????
-        });
+        .fail(error);
     }
 
     /**
@@ -244,6 +243,23 @@
             .html(createdDate);
     }
 
+    /**
+    * possible error messages when trying to access an individual repository
+    * @param  {jquery xhr Object}  contains the possible error status codes
+    * @return {void}
+     */
+    function error(xhr) {
+        if (xhr.status === 404) {
+            $repoDetailView
+                .append('<p>The individual repository that you are trying to access\
+                            cannot be found, perhaps the link attached is incorrect.</p>');
+        } else if (xhr.status >= 500) {
+            console.log('Server side error');
+            $repoDetailView
+                .append('<p>I\'m sorry, GitHub cannot be accessed right now.</p>');
+        }
+    }
+
 
 })(window.ghTracker);
 
@@ -254,6 +270,7 @@
 
     var reposData;
     var $reposTable = $('#repos .table');
+    var $reposView = $('#repos');
 
     ns.repos = {};
     ns.repos.loadView = function initRepos() {
@@ -269,7 +286,8 @@
     function reposView() {
         if(!reposData){
             retrieveRepositories(window.ghTracker.user.login)
-                .done(displayRepos);
+                .done(displayRepos)
+                .fail(error);
         }
     }
 
@@ -290,9 +308,6 @@
         })
         .done(function saveRepos(data){
             reposData = data;
-        })
-        .fail(function(xhr){ //TODO WHAT SHOULD FAIL DO????
-            console.log(xhr);
         });
     }
 
@@ -315,6 +330,23 @@
                             <td class="openIssues">' + repo.open_issues + '</td>\
                         </tr>');
         });
+    }
+
+    /**
+    * possible error messages when trying to access repositories
+    * @param  {jquery xhr Object}  contains the possible error status codes
+    * @return {void}
+     */
+    function error(xhr) {
+        if (xhr.status === 404) {
+            $reposView
+                .append('<p>The user\'s repositories you are trying to access\
+                            is not found, maybe the username is incorrect?</p>');
+        } else if (xhr.status >= 500) {
+            console.log('Server side error');
+            $reposView
+                .append('<p>I\'m sorry, GitHub cannot be accessed right now.</p>');
+        }
     }
 
 

@@ -11,7 +11,8 @@
         event.preventDefault();
         ns.$token = ns.$token.val();
         authenticateToken(ns.$token)
-            .done(enterMyProfile);
+            .done(enterMyProfile)
+            .fail(error);
     });
 
 
@@ -29,8 +30,7 @@
         })
         .done(function saveUserInfo(data){
             ns.user = data;
-        })
-        .fail(error);
+        });
     }
 
     /**

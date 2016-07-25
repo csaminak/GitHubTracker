@@ -5,6 +5,7 @@
 
     var reposData;
     var $reposTable = $('#repos .table');
+    var $reposView = $('#repos');
 
     ns.repos = {};
     ns.repos.loadView = function initRepos() {
@@ -20,7 +21,8 @@
     function reposView() {
         if(!reposData){
             retrieveRepositories(window.ghTracker.user.login)
-                .done(displayRepos);
+                .done(displayRepos)
+                .fail(error);
         }
     }
 
@@ -41,9 +43,6 @@
         })
         .done(function saveRepos(data){
             reposData = data;
-        })
-        .fail(function(xhr){ //TODO WHAT SHOULD FAIL DO????
-            console.log(xhr);
         });
     }
 
@@ -66,6 +65,23 @@
                             <td class="openIssues">' + repo.open_issues + '</td>\
                         </tr>');
         });
+    }
+
+    /**
+    * possible error messages when trying to access repositories
+    * @param  {jquery xhr Object}  contains the possible error status codes
+    * @return {void}
+     */
+    function error(xhr) {
+        if (xhr.status === 404) {
+            $reposView
+                .append('<p>The user\'s repositories you are trying to access\
+                            is not found, maybe the username is incorrect?</p>');
+        } else if (xhr.status >= 500) {
+            console.log('Server side error');
+            $reposView
+                .append('<p>I\'m sorry, GitHub cannot be accessed right now.</p>');
+        }
     }
 
 

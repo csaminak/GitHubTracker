@@ -9,6 +9,7 @@
     var $stars = $('.stars');
     var $forks = $('.forks');
     var $createDate = $('.createDate');
+    var $repoDetailView = $('#repoDetail');
 
     ns.repoDetail = {};
     ns.repoDetail.loadView = function initRepoDetail(viewHash) {
@@ -38,9 +39,7 @@
         .done(function saveRepo(data){
             repoData = data;
         })
-        .fail(function(xhr){
-            console.log(xhr); //TODO WHAT SHOULD FAIL DO????
-        });
+        .fail(error);
     }
 
     /**
@@ -76,6 +75,23 @@
             .html(forks);
         $createDate
             .html(createdDate);
+    }
+
+    /**
+    * possible error messages when trying to access an individual repository
+    * @param  {jquery xhr Object}  contains the possible error status codes
+    * @return {void}
+     */
+    function error(xhr) {
+        if (xhr.status === 404) {
+            $repoDetailView
+                .append('<p>The individual repository that you are trying to access\
+                            cannot be found, perhaps the link attached is incorrect.</p>');
+        } else if (xhr.status >= 500) {
+            console.log('Server side error');
+            $repoDetailView
+                .append('<p>I\'m sorry, GitHub cannot be accessed right now.</p>');
+        }
     }
 
 
