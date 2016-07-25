@@ -1,4 +1,14 @@
 #login {
     margin-top: $topMargin;
     text-align: center;
+
+    input:first-child {
+        width: $loginFieldWidth;
+    }
+
+    p {
+        font-weight: bold;
+        font-size: $loginMsgSize;
+        color: $loginColor;
+    }
 }

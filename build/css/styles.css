@@ -1,15 +1,50 @@
 #login {
   margin-top: 50px;
   text-align: center; }
+  #login input:first-child {
+    width: 400px; }
+  #login p {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #337ab7; }
 
 nav {
   display: none;
   margin-top: 50px;
   position: relative; }
 
+.nav > li > a:hover {
+  background-color: #aecee9;
+  border-color: #aecee9;
+  font-weight: bold; }
+
 .logout {
   position: absolute;
   bottom: 0;
   right: 0; }
+
+#myProfile {
+  position: relative;
+  margin-top: 25px; }
+  #myProfile li {
+    list-style: none;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 5px; }
+  #myProfile .dataStyle {
+    font-weight: normal; }
+  #myProfile .following {
+    font-style: italic; }
+  #myProfile .username a:hover {
+    text-decoration: none;
+    font-weight: bolder; }
+
+.avatar {
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0 25px;
+  width: 200px; }
 
 /*# sourceMappingURL=styles.css.map */

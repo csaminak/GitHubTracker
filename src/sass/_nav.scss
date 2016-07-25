@@ -4,6 +4,12 @@ nav {
     position: relative;
 }
 
+.nav>li>a:hover {
+    background-color: $tabHoverColor;
+    border-color: $tabBorderColor;
+    font-weight: bold;
+}
+
 .logout {
     position: absolute;
     bottom: 0;
