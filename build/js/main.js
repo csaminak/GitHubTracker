@@ -9,7 +9,6 @@
     $loginForm.on('submit', function getMyProfile(event){
         event.preventDefault();
         ns.$token = ns.$token.val();
-        console.log(ns.$token);
         authenticateToken(ns.$token)
             .done(enterMyProfile);
     });
@@ -139,8 +138,8 @@
     };
 
     $logout.on('click', function logout() {
-        console.log(window.ghTracker.$token);
-        window.ghTracker.$token = '';
+        window.ghTracker.$token = $('input[name="token"]');
+        window.ghTracker.user = {};
         $('input[name="token"]')
             .val('');
         window.location.hash = '#login';

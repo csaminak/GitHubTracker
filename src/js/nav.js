@@ -49,8 +49,8 @@
     };
 
     $logout.on('click', function logout() {
-        console.log(window.ghTracker.$token);
-        window.ghTracker.$token = '';
+        window.ghTracker.$token = $('input[name="token"]');
+        window.ghTracker.user = {};
         $('input[name="token"]')
             .val('');
         window.location.hash = '#login';

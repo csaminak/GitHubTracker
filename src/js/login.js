@@ -9,7 +9,6 @@
     $loginForm.on('submit', function getMyProfile(event){
         event.preventDefault();
         ns.$token = ns.$token.val();
-        console.log(ns.$token);
         authenticateToken(ns.$token)
             .done(enterMyProfile);
     });
