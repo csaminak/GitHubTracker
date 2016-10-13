@@ -299,7 +299,10 @@
      * @param  {String} username  retrieved from the user object to access repos.
      * @return {Array}            all the repositories associated with the user.
      */
-    function retrieveRepositories(username){
+    function retrieveRepositories(username) {
+      if(!username) {
+        return new Error('no username, so cannot find user.');
+      }
         return $.ajax({
             url: 'https://api.github.com/users/' + username + '/repos',
             method: 'get',
@@ -317,8 +320,11 @@
      * @param  {Array}  repoData   An array with objects each object as a repo.
      * @return {void}
      */
-    function displayRepos(reposData){
-        reposData.forEach(function(repo){
+    function displayRepos(reposData) {
+      if (!reposData) {
+        return new Error('no repositories given.');
+      }
+        reposData.forEach(function(repo) {
             $reposTable //TODO Need to update where repo anchor will go to, load repoDetail
                 .append('<tr>\
                             <td class="repoName">\
