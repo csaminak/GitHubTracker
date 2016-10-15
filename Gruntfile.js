@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                 options: {
                     sourceMap: true
                 },
-                src: ['src/js/*.js'],
+                src: ['src/js/**/*.js'],
                 //if there is another folder to find, specify that folder,
                 //make sure the first js file that has to run is specified first
                 dest: 'build/js/main.js'
