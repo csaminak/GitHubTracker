@@ -49,7 +49,7 @@
     };
 
     $logout.on('click', function logout() {
-        window.ghTracker.$token = $('input[name="token"]');
+        window.ghTracker.$token = '';
         window.ghTracker.user = {};
         $('input[name="token"]')
             .val('');
